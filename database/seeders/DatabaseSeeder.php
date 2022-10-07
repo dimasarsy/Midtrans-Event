@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
             categoriesSeeder::class,
             RoleSeeder::class,
             ScheduleSeeder::class,
-            FilterSeeder::class,
         ]);
     }
 

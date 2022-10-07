@@ -26,11 +26,9 @@ class CreateSchedulesTable extends Migration
             $table->string('availableScheduleDate');
             $table->string('dueDateSchedule');
             $table->string('status')->nullable();
-            $table->string('notifyStatus')->default('not notified');
-            $table->string('emailNotifyStatus')->default('not notified');
+            $table->boolean('vip')->default('0');
             $table->foreignId('user_id');
             $table->string('author');
-            $table->boolean('vip')->default('0');
             $table->timestamps();
         });
     }

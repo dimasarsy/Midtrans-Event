@@ -17,12 +17,11 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('status');
             $table->foreignId('user_id');
+            $table->string('number')->nullable();
             $table->string('uname')->nullable();
             $table->string('email')->nullable();
-            $table->string('number')->nullable();
             $table->foreignId('schedule_id');
-            $table->string('status_web_notification')->default('not notified');
-            $table->string('status_email_notification')->default('not notified');
+
             $table->string('transaction_id');
             $table->string('order_id');
             $table->string('gross_amount');

@@ -17,8 +17,6 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string("name")->unique();
             $table->string("slug")->unique();
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('published_at')->nullable();
         });
     }
 

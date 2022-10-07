@@ -19,7 +19,6 @@ class CreateActivitiesTable extends Migration
             $table->string('slug')->unique();
             $table->text('desc');
             $table->string('image');
-            $table->timestamps();
         });
     }
 

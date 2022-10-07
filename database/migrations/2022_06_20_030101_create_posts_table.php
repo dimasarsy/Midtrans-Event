@@ -19,12 +19,12 @@ class CreatePostsTable extends Migration
             $table->string('slug', 512)->unique();
             $table->text('description');
             $table->text('body');
-            $table->foreignId("user_id");
-            $table->foreignId('categories_id');
             $table->string('image');
             $table->string('image2')->nullable();
             $table->string('image3')->nullable();
             $table->string('shopeelink');
+            $table->foreignId("user_id");
+            $table->foreignId('categories_id');
             $table->timestamp("published_at")->nullable();
             $table->timestamps();
         });

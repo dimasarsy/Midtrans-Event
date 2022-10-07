@@ -18,8 +18,6 @@ class RoleSeeder extends Seeder
             [
                 ["name" => "Admin"],
                 ["name" => "User"],
-                ["name" => "Muthawif"],
-                ["name" => "Vendor"]
             ]
         );
     }

@@ -27,8 +27,7 @@ class ScheduleSeeder extends Seeder
                     "availableScheduleDate" => "2023-12-27 14:00:00",
                     "dueDateSchedule" => "2023-12-27 17:00:00",
                     "status" => "available",
-                    "notifyStatus" => "notified",
-                    "emailNotifyStatus" => "notified",
+
                     "user_id" => 2,
                     "author" => "Rini Kuskis",
                 ],
@@ -43,8 +42,7 @@ class ScheduleSeeder extends Seeder
                     "availableScheduleDate" => "2023-12-11 13:00:00",
                     "dueDateSchedule" => "2023-12-11 15:00:00",
                     "status" => "available",
-                    "notifyStatus" => "notified",
-                    "emailNotifyStatus" => "notified",
+
                     "user_id" => 3,
                     "author" => "Rita Ruminin",
                 ],
@@ -59,8 +57,7 @@ class ScheduleSeeder extends Seeder
                     "availableScheduleDate" => "2023-12-19 11:00:00",
                     "dueDateSchedule" => "2023-12-19 16:00:00",
                     "status" => "available",
-                    "notifyStatus" => "notified",
-                    "emailNotifyStatus" => "notified",
+
                     "user_id" => 2,
                     "author" => "Rini Kuskis",
                 ],
