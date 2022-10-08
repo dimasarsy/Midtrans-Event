@@ -278,8 +278,6 @@ class ScheduleController extends Controller
             $validatedData['availableScheduleDate'] =  $date_start->addHours($hour_start)->addMinutes($minute_start);
             $validatedData['dueDateSchedule'] =  $date_end->addHours($hour_end)->addMinutes($minute_end);
 
-            $validatedData['notifyStatus'] =  'not notified';
-            $validatedData['emailNotifyStatus'] =  'not notified';
 
         } else {
             $validatedData = $request->validate([
@@ -308,8 +306,7 @@ class ScheduleController extends Controller
             $validatedData['availableScheduleDate'] =  $date_start->addHours($hour_start)->addMinutes($minute_start);
             $validatedData['dueDateSchedule'] =  $date_end->addHours($hour_end)->addMinutes($minute_end);
 
-            $validatedData['notifyStatus'] =  'not notified';
-            $validatedData['emailNotifyStatus'] =  'not notified';
+
         }
 
         if ($request->file('image')) {
@@ -350,7 +347,7 @@ class ScheduleController extends Controller
             "title" => "Schedule History",
             "active" => "scheduleHistory",
             "schedules" => $schedule,
-            "filters" => Filter::all(),
+
         ]);
     }
 }

@@ -12,6 +12,10 @@
         <div class="card-body">
             <div class="container">
 
+            <div class="card-header py-3">
+                <a href="/dashboard/addSchedule" class="btn btn-primary btn-icon-split"><span class="icon text-white-50"><i class="fas fa-plus"></i></span><span class="text">Add Schedule</span></a>
+            </div>
+
                 <div class="table-responsive">
 
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

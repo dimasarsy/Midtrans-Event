@@ -17,12 +17,20 @@ class categoriesSeeder extends Seeder
         DB::table('categories')->insert(
             [
                 [
-                    "name" => "Koleksi Sorak Sorai",
-                    "slug" => "koleksi-sorak-sorai"
+                    "name" => "Pakaian",
+                    "slug" => "pakaian"
                 ],
                 [
-                    "name" => "Mitra Kami",
-                    "slug" => "mitra-kami"
+                    "name" => "Alat Tulis dan Kantor",
+                    "slug" => "alat-tulis-dan-kantor"
+                ],
+                [
+                    "name" => "Kebutuhan Rumah",
+                    "slug" => "kebutuhan-rumah"
+                ],
+                [
+                    "name" => "Mini Souvenir",
+                    "slug" => "mini-souvenir"
                 ]
             ]
         );

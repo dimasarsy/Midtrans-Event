@@ -38,14 +38,12 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="categories" class="block text-sm font-medium text-gray-700 mb-2">categories</label>
+                    <label for="categories" class="block text-sm font-medium text-gray-700 mb-2">Product Category</label>
                     <select id="categories" name="categories_id" autocomplete="categories-name" class="form-select form-select-sm ">
-                        @can('admin')
-                        <option value="1">Koleksi Sorak-Sorai</option>
-                        @endcan
-                        @can('vendor')
-                        <option value="2">Mitra Kami</option>
-                        @endcan
+                        <option value="1">Pakaian</option>
+                        <option value="2">Alat Tulis & Kantor</option>
+                        <option value="3">Kebutuhan Rumah</option>
+                        <option value="4">Mini Souvenir</option>
                     </select>
                 </div>
 

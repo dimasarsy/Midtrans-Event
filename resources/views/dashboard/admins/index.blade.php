@@ -21,8 +21,6 @@
                 <th scope="col">Username</th>
                 <th scope="col">Email</th>
                 <th scope="col">Password</th>
-
-                <th scope="col">Action</th>
               </tr>
             </thead>
 
@@ -35,17 +33,6 @@
                 <td>{{ $user->username }}</td>
                 <td>{{ $user->email }}</td>
                 <td>********</td>
-
-                <td> 
-                  <!-- <a href="/dashboard/users/{{ $user->slug }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a> -->
-                  
-                  <form action="/dashboard/users/{{ $user->slug }}" method="post" class="d-inline">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Are you sure to delete this post?')"><i class="fas fa-trash"></i></button>
-                  </form>
-                  
-                </td>
               </tr>
               @endif
             @endforeach

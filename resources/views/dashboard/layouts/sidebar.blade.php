@@ -9,15 +9,7 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
-    @can('vendor')
-    <li class="nav-item">
-      <a class="nav-link {{ Request::is('dashboard-vendor') ? 'active' : '' }}" aria-current="page" href="/dashboard-vendor">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard Vendor</span></a>
-    </li>
-    @endcan
 
-    @can('admin')
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
       <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="/dashboard">
@@ -25,84 +17,35 @@
         <span>Dashboard</span></a>
     </li>
 
-    <!-- Divider -->
-
-    <hr class="sidebar-divider">
-    <!-- Heading -->
-    <div class="sidebar-heading">
-      Users
-    </div>
-
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
       <a class="nav-link {{ Request::is('dashboard/admins*') ? 'active' : '' }} && {{ Request::is('dashboard/users*')  ? 'active' : '' }} && {{ Request::is('dashboard/vendors*')  ? 'active' : '' }}  collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
         <i class="fas fa-fw fa-user"></i>
-        <span>Role</span>
+        <span>Users</span>
       </a>
 
       <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <!-- <h6 class="collapse-header">Login Screens:</h6> -->
           <a class="collapse-item {{ Request::is('dashboard/admins*') ? 'active' : '' }} " aria-current="page" href="/dashboard/admins">Admin</a>
-          <a class="collapse-item {{ Request::is('dashboard/users*') ? 'active' : '' }} " aria-current="page" href="/dashboard/users">User</a>
-          <a class="collapse-item {{ Request::is('dashboard/vendors*') ? 'active' : '' }} " aria-current="page" href="/dashboard/vendors">Vendor</a>
+          <a class="collapse-item {{ Request::is('dashboard/users*') ? 'active' : '' }} " aria-current="page" href="/dashboard/users">Pengunjung</a>
         </div>
       </div>
     </li>
-    <li class="nav-item">
-      <a class="nav-link {{ Request::is('dashboard/pengajuan-vendor*') ? 'active' : '' }} " aria-current="page" href="/dashboard/pengajuan-vendor">
-        <i class='fas fa-user-check'></i>
-        <span>Vendor Request</span>
-      </a>
-    </li>
-    @endcan
+    
     <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
     <div class="sidebar-heading">
-      Markets
+      E-Ticket
     </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    <!-- <li class="nav-item">
-              <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }} && {{ Request::is('dashboard/categories*')  ? 'active' : '' }} collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct"
-                    aria-expanded="true" aria-controls="collapseProduct">
-                    <i class="fas fa-fw fa-shopping-bag"></i>
-                    <span>Product</span>
-                </a>
-
-                <div id="collapseProduct" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item {{ Request::is('dashboard/posts*') ? 'active' : '' }}" href="/dashboard/posts">My Product</a>
-                        
-                        @can('admin')
-                        <a class="collapse-item {{ Request::is('dashboard/categories*') ? 'active' : '' }} " aria-current="page" href="/dashboard/categories">Seller categories</a>
-                        @endcan
-                    </div>
-                </div>
-            </li> -->
-
     <li class="nav-item">
-      <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}" aria-current="page" href="/dashboard/posts">
-        <i class="fas fa-fw fa-shopping-bag"></i>
-        <span>My Product</span>
-      </a>
-    </li>
-
-    @can('admin')
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link {{ Request::is('dashboard/addSchedule*') ? 'active' : '' }} && {{ Request::is('dashboard/scheduleHistory*')  ? 'active' : '' }} collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+      <a class="nav-link {{ Request::is('dashboard/scheduleHistory*') ? 'active' : '' }}" aria-current="page" href="/dashboard/scheduleHistory">
         <i class="fas fa-calendar-alt"></i>
         <span>Schedule</span>
       </a>
-      <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item {{ Request::is('dashboard/addSchedule*') ? 'active' : '' }} " aria-current="page" href="/dashboard/addSchedule">Add Schedule</a>
-          <a class="collapse-item {{ Request::is('dashboard/scheduleHistory*') ? 'active' : '' }} " aria-current="page" href="/dashboard/scheduleHistory">Schedule History</a>
-        </div>
-      </div>
     </li>
 
     <li class="nav-item">
@@ -120,7 +63,13 @@
       Festival Set
     </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}" aria-current="page" href="/dashboard/posts">
+        <i class="fas fa-fw fa-shopping-bag"></i>
+        <span>Merchandise</span>
+      </a>
+    </li>
+
     <li class="nav-item">
       <a class="nav-link {{ Request::is('dashboard/lineups*') ? 'active' : '' }} " aria-current="page" href="/dashboard/lineups">
         <i class="fas fa-fw fa-music"></i>
@@ -155,7 +104,6 @@
         <span>Gallery</span>
       </a>
     </li>
-    @endcan
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

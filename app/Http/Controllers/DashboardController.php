@@ -16,15 +16,10 @@ class DashboardController extends Controller
         ->get();
         
         
-        // $pengajuans = DB::table('Pengajuans')->get();
-        
         return view('dashboard.index', [
             'users'      => $users,
             'posts'      => Post::where('user_id', auth()->user()->id)->get(),
-            "pengajuans"  => Pengajuan::where('status', "Review")
-                            ->where('ktp', null)
-                            ->where('sertifikat', null)
-                            ->get(),
+
             'schedules' => Schedule::where('status', "available")
                         ->where('enddate', '>=', date('Y-m-d'))
                         ->join('users', 'schedules.user_id', '=', 'users.id')

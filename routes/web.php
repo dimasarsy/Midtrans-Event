@@ -85,10 +85,6 @@ Route::get('/pengajuan/create', [PengajuanController::class, "create"])->middlew
 Route::post('/pengajuan/store', [PengajuanController::class, "store"])->middleware('auth');
 Route::put('/pengajuan/update/{id}', [PengajuanController::class, "update"])->middleware('auth');
 
-// ================ DASHBOARD PENGAJUAN VENDOR =====================
-Route::get('/dashboard/pengajuan-vendor', [DashboardVendorReqController::class, 'index'])->middleware('auth');
-Route::put('/dashboard/pengajuan-vendor/update/{id}', [DashboardVendorReqController::class, 'update'])->middleware('auth');
-
 // ===================================
 // =========== DASHBOARD =============
 // ===================================

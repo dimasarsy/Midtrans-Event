@@ -56,26 +56,17 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                 @cannot('admin')
+                <a class="collapse-item" href="/profil"><i class="fas fa-fw fa-user"></i>&emsp;Profil</a>
+                <hr class="dropdown-divider">
                 <a class="collapse-item" href="/orders"><i class="fas fa-ticket-alt"></i>&emsp;Tiket Saya</a>
                 <hr class="dropdown-divider">
                 @endcannot
-
-                @can('vendor')
-                <a class="collapse-item" href="/dashboard-vendor"><i class="fas fa-fw fa-tachometer-alt"></i>&emsp;Dashboard</a>
-                <hr class="dropdown-divider">
-                @endcan
 
                 @can('admin')
                 <a class="collapse-item" href="/dashboard"><i class="fas fa-fw fa-tachometer-alt"></i>&emsp;Dashboard</a>
                 <hr class="dropdown-divider">
                 @endcan
 
-                @cannot('vendor')
-                @cannot('admin')
-                <a class="collapse-item-vendor" href="/pengajuan/create">Daftar Sebagai Mitra</a>
-                <hr class="dropdown-divider">
-                @endcannot
-                @endcannot
 
                 <li>
                   <form action="/logout" method="post">

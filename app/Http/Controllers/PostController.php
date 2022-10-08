@@ -18,45 +18,66 @@ class PostController extends Controller
             $categories = categories::firstWhere('slug', request('categories'));
         }
         
-
         $posts = Post::with(["author", "categories"])
             ->latest()
-            // ->where('posts.categories_id', '2')
-            ->filter(request(["search", 'categories', 'author']))
             ->get();
 
+        $pakaian = Post::with(["author", "categories"])
+            ->latest()
+            ->where('posts.categories_id', '1')
+            ->get();
 
-        $posts_mitra = Post::with(["author", "categories"])
-            ->filter(request(["search", 'categories', 'author']))
+        $posts_pakaian = Post::with(["author", "categories"])
+            ->latest()
+            ->where('posts.categories_id', '1')
+            ->limit(5)
+            ->get();
+        
+        $atk = Post::with(["author", "categories"])
+            ->latest()
+            ->where('posts.categories_id', '2')
+            ->get();
+
+        $posts_atk = Post::with(["author", "categories"])
             ->latest()
             ->where('posts.categories_id', '2')
             ->limit(5)
+            ->get();    
+        $rumah = Post::with(["author", "categories"])
+            ->latest()
+            ->where('posts.categories_id', '3')
             ->get();
 
-        $koleksi = Post::with(["author", "categories"])
+        $posts_rumah = Post::with(["author", "categories"])
             ->latest()
-            ->filter(request(["search", 'categories', 'author']))
-            ->where('posts.categories_id', '1')
-            ->get();
-
-        $posts_koleksi = Post::with(["author", "categories"])
-            ->filter(request(["search", 'categories', 'author']))
-            ->latest()
-            ->where('posts.categories_id', '1')
+            ->where('posts.categories_id', '3')
             ->limit(5)
+            ->get();    
+        $mini = Post::with(["author", "categories"])
+            ->latest()
+            ->where('posts.categories_id', '4')
             ->get();
+
+        $posts_mini = Post::with(["author", "categories"])
+            ->latest()
+            ->where('posts.categories_id', '4')
+            ->limit(5)
+            ->get();    
 
         return view('posts.posts', [
             "title" => "Marketplace",
             "categories"  => $categories,
-            "pengajuans"  => Pengajuan::where('status', "Lolos")
-                            ->join('users', 'pengajuans.user_id', '=', 'users.id')
-                            ->select('pengajuans.*', 'users.username')
-                            ->get(),
+
             "posts" => $posts,
-            "posts_mitra" => $posts_mitra,
-            "posts_koleksi" => $posts_koleksi,
-            "koleksi" => $koleksi,
+
+            "posts_pakaian" => $posts_pakaian,
+            "pakaian" => $pakaian,
+            "posts_atk" => $posts_atk,
+            "atk" => $atk,
+            "posts_rumah" => $posts_rumah,
+            "rumah" => $rumah,
+            "posts_mini" => $posts_mini,
+            "mini" => $mini,
             'users' => User::query()->latest()->get()
         ]);
     }

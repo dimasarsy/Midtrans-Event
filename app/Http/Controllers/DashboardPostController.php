@@ -21,7 +21,6 @@ class DashboardPostController extends Controller
         $posts = Post::with(["author", "categories"])
         ->latest()
         ->where('posts.user_id',auth()->user()->id)
-        ->filter(request(["search", 'categories', 'author']))
         ->paginate(8);
 
         // $posts = auth()->user()->posts()->latest()->get(); // Error of intelephense
