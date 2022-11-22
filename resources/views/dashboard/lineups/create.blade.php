@@ -21,6 +21,16 @@
                     @error('slug') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     <small class="text-gray-500 font-medium block my-2">Auto generate after you filled field name and click tab.</small>
                 </div>
+
+                <div class="mb-3">
+                    <label for="schedule_id" class="block text-sm font-medium text-gray-700 mb-2">Event Name</label>
+                    <select id="schedule_id" name="schedule_id" autocomplete="schedule_id" class="form-select form-select-sm ">
+                        @foreach($schedules as $schedule)
+                            <option value="{{ $schedule->id }}">{{ $schedule->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div class="mb-3">
                     <label for="date">Schedule Date</label>
                     <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" placeholder="Date" name="date" value="{{ old('date') }}">

@@ -33,7 +33,7 @@
                 <select class="form-control custom-select" id="exampleFormControlSelect1" name="role_id">
                     <option value="{{ old('role_id', $user->role_id) }}" selected>Choose...</option>
                     <option value="1">Admin</option>
-                    <option value="2">User</option>
+                    <option value="2">Pengunjung</option>
                 </select><br><br>
             
                 <button type="submit" class="btn btn-primary mb-5">Update User</button>

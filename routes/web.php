@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\LineupController;
 use App\Http\Controllers\GalleryController;
@@ -19,7 +20,6 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardAdminController;
-use App\Http\Controllers\DashboardVendorReqController;
 use App\Http\Controllers\TugasController;
 
 /*
@@ -70,6 +70,16 @@ Route::put('/dashboard/updateSchedule/{schedule}', [ScheduleController::class, "
 
 Route::delete('/dashboard/delete/{schedule}', [ScheduleController::class, "destroy"])->middleware('auth');
 
+// ================ PROFIL =====================
+Route::get('/profil', [ProfilController::class, "show"])->middleware('auth');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/edit-profil', [ProfilController::class, "edit"])->name('profil.edit');
+
+    Route::patch('profil', [ProfilController::class, "update"])->name('profil.update');
+});
+
+
 // ================ ORDERS =====================
 Route::get('/orders', [OrderController::class, "myticket"])->middleware('auth');
 Route::get('/ordersDetail/{orders}', [OrderController::class, "showOrderDetail"]);
@@ -116,11 +126,11 @@ Route::get('/dashboard/lineups/slug', [LineupController::class, 'slug'])->middle
 Route::resource('/dashboard/lineups', LineupController::class)->middleware('admin');
 
 // ================ DASHBOARD SPONSOR =====================
-Route::get('/dashboard/sponsors/slug', [SponsorController::class, 'slug'])->middleware('admin');
+Route::get('/dashboard/sponsors/id', [SponsorController::class, 'id'])->middleware('admin');
 Route::resource('/dashboard/sponsors', SponsorController::class)->middleware('admin');
 
 // ================ DASHBOARD MEDIA =====================
-Route::get('/dashboard/medias/slug', [MediaController::class, 'slug'])->middleware('admin');
+Route::get('/dashboard/medias/id', [MediaController::class, 'id'])->middleware('admin');
 Route::resource('/dashboard/medias', MediaController::class)->middleware('admin');
 
 // ================ DASHBOARD ACTIVITY =====================
@@ -128,7 +138,7 @@ Route::get('/dashboard/activities/slug', [ActivityController::class, 'slug'])->m
 Route::resource('/dashboard/activities', ActivityController::class)->middleware('admin');
 
 // ================ DASHBOARD GALLERY =====================
-Route::get('/dashboard/galleries/slug', [GalleryController::class, 'slug'])->middleware('admin');
+Route::get('/dashboard/galleries/id', [GalleryController::class, 'id'])->middleware('admin');
 Route::resource('/dashboard/galleries', GalleryController::class)->middleware('admin');
 
 Route::get('/tugas/tambah', [TugasController::class, 'tambah']);

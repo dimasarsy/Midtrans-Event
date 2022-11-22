@@ -20,4 +20,9 @@ class Schedule extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    public function lineups()
+    {
+        return $this->hasMany(Lineup::class);
+    }
 }

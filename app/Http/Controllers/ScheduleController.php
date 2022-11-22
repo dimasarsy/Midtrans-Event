@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Filter;
 use App\Models\Schedule;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -174,7 +173,7 @@ class ScheduleController extends Controller
             "vip" => "required",
             "price" => "required|integer|min:1000",
             "description" => "required|max:510",
-            "image" => "required",
+            "image" => "required|image|file|max:1024",
             "date" => "required",
             "enddate" => "",
             "starttime" => "required",

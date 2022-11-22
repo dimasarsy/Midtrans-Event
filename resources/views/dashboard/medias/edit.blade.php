@@ -7,7 +7,7 @@
 <div class="card shadow mb-4">
     <div class="col-lg-10">
         <div class="card-body">
-            <form action="/dashboard/medias/{{ $media->slug }}" method="POST" novalidate enctype="multipart/form-data">
+            <form action="/dashboard/medias/{{ $media->id }}" method="POST" novalidate enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="mb-3">
@@ -15,12 +15,7 @@
                     <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror"  value="{{ old('name', $media->name) }}" autofocus>
                     @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
-                <div class="mb-3">
-                    <label for="slug" class="form-label">Slug</label>
-                    <input id="slug" name="slug" type="text" readonly autocomplete="slug" class="form-control @error('slug') is-invalid @enderror" value="{{ old('slug', $media->slug) }}">
-                    @error('slug') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                    <small class="text-gray-500 font-medium block my-2">Auto generate after you filled field name and click tab.</small>
-                </div>
+
                 <div class="mb-3">
                     <label for="link" class="form-label">Link</label>
                     <input id="link" name="link" type="text" class="form-control @error('link') is-invalid @enderror"  value="{{ old('link', $media->link) }}" autofocus>
@@ -47,17 +42,6 @@
 
 <script>
 
-    const name = document.getElementById('name');
-    const slug = document.getElementById('slug');
-
-    name.addEventListener('change', async function() {
-        const res = await fetch(`/dashboard/medias/slug?${
-            new URLSearchParams({name: this.value})
-            .toString()
-        }`);
-        const data = await res.json();
-        slug.value = data.slug;
-    });
 
     function previewImage(){
         const image = document.querySelector('#image');

@@ -44,7 +44,6 @@ class GalleryController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:200',
-            'slug'   => 'required|unique:galleries',
             'image' => 'required|image|file|max:1024'
         ]);
 
@@ -94,10 +93,6 @@ class GalleryController extends Controller
             'image' => 'image|file|max:1024'
         ];
 
-        if ($request->slug !== $gallery->slug) {
-            $rules['slug'] = 'required|unique:galleries';
-        }
-
         $validatedData = $request->validate($rules);
 
         if ($request->file('image')) {
@@ -128,22 +123,5 @@ class GalleryController extends Controller
         if ($gallery->image) Storage::delete($gallery->image);
         $gallery->delete();
         return redirect()->to('/dashboard/galleries')->with('deleted', 'Gallery has been deleted.');
-    }
-
-    public function slug()
-    {
-        $slug = Str::of(request('name'))->slug()->value;
-        while (true) {
-            $gallery = Gallery::query()->where('slug', '=', $slug)->get();
-            if ($gallery->isNotEmpty()) {
-                $slug .= '-' . Str::lower(Str::random(5));
-                continue;
-            } else {
-                break;
-            }
-        }
-        return response()->json([
-            "slug"  => $slug
-        ]);
     }
 }

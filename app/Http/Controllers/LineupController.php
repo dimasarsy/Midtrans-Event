@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Schedule;
 use App\Models\Lineup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 
 class LineupController extends Controller
@@ -19,8 +21,13 @@ class LineupController extends Controller
      */
     public function index()
     {
+        $lineup = DB::table('lineups as lineup')
+                ->join('schedules', 'lineup.schedule_id', '=', 'schedules.id')
+                ->select('lineup.*', 'schedules.name as sname')
+                ->get();
+
         return view('dashboard.lineups.index', [
-            'lineups' => Lineup::query()->latest()->get()
+            'lineups' => $lineup,
         ]);
     }
 
@@ -32,7 +39,8 @@ class LineupController extends Controller
     public function create()
     {
         return view('dashboard.lineups.create', [
-            'lineups' => Lineup::query()->latest()->get()
+            'lineups' => Lineup::query()->latest()->get(),
+            'schedules' => Schedule::all()
         ]);
     }
 
@@ -44,26 +52,11 @@ class LineupController extends Controller
      */
     public function store(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'name' => 'required|max:100',
-        //     'slug'   => 'required|unique:lineups',
-        //     'date'   => 'required|max:20',
-        //     'time'   => 'required',
-        //     'image' => 'required|image|file|max:1024',
-        //     'information'   => 'required'
-
-        // ]);
-
-        // $validatedData['image'] = $request->file('image')->store('post-images');
-        // $validatedData['user_id'] = auth()->user()->id;
-
-        // Lineup::create($validatedData);
-
-        // return redirect()->to('/dashboard/lineups')->with('success', 'New Performance has been Uploaded.');
 
         $validatedData = $request->validate([
             'name' => 'required|max:100',
             'slug'   => 'required|unique:lineups',
+            'schedule_id'   => 'required|numeric',
             "date" => "required",
             "starttime" => "required",
             "endtime" => "required",
@@ -76,6 +69,7 @@ class LineupController extends Controller
         $lineup = new Lineup();
         $lineup->name = $validatedData['name'];
         $lineup->slug = $validatedData['slug'];
+        $lineup->schedule_id = $validatedData['schedule_id'];
         $lineup->image = $validatedData['image'];
         $lineup->date = $validatedData['date'];
         $lineup->information = $validatedData['information'];
@@ -125,6 +119,7 @@ class LineupController extends Controller
     {
         return view('dashboard.lineups.edit', [
             'lineup' => $lineup,
+            'schedules' => Schedule::all()
         ]);
     }
 
@@ -141,6 +136,7 @@ class LineupController extends Controller
             $validatedData = $request->validate([
                 'name' => 'required|max:100',
                 "date" => "required",
+                'schedule_id'   => 'required|numeric',
                 "starttime" => "required",
                 "endtime" => "required",
                 'image' => 'image|file|max:1024',
@@ -166,6 +162,7 @@ class LineupController extends Controller
             $validatedData = $request->validate([
                 'name' => 'required|max:100',
                 "date" => "required",
+                'schedule_id'   => 'required|numeric',
                 "starttime" => "required",
                 "endtime" => "required",
                 'image' => 'image|file|max:1024',
@@ -196,8 +193,8 @@ class LineupController extends Controller
         }
 
         if (
-            $request->name == $lineup->name && $request->price == $lineup->price &&
-            $request->description == $lineup->description &&
+            $request->name == $lineup->name && $request->schedule_id == $lineup->schedule_id && 
+            $request->price == $lineup->price && $request->description == $lineup->description &&
             $request->file('image') == null && $request->date == $lineup->date &&
             $request->starttime == $lineup->starttime && $request->endtime == $lineup->endtime
         ) {

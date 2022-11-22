@@ -128,7 +128,7 @@
 <!-- --------------------------------------------------------------
   # ABOUT
   -------------------------------------------------------------- -->
-  
+
 <section id="festival" class="about">
   <div class="container">
     <div class="row justify-content-center text-center">
@@ -656,9 +656,6 @@
           <div class="member-img">
             <a href="{{ $sponsor->link }}">
               <img class="img-fluid" src="{{ asset('storage/' . $sponsor->image) }}" alt="{{ $sponsor->name }}'s image">
-              <!-- <div class="social-team">
-                    <h2>{{ $sponsor->name }}</h2>
-                  </div> -->
             </a>
           </div>
         </div>
@@ -683,9 +680,13 @@
       <div class="col-10">
         <div class="clients-slider-media swiper-container" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper d-flex align-items-center">
-              @foreach($media as $media)
-              <div class="swiper-slide"><img class="img-fluid" src="{{ asset('storage/' . $media->image) }}" alt="{{ $media->name }}'s image"></div>
-              @endforeach
+            @foreach($media as $media)
+            <div class="swiper-slide">
+              <a href="{{ $media->link }}">
+                <img class="img-fluid" src="{{ asset('storage/' . $media->image) }}" alt="{{ $media->name }}'s image">
+              </a>
+            </div>
+            @endforeach
           </div>
         </div>
       </div>
@@ -693,6 +694,19 @@
 
   </div>
 </section>
+
+<!-- --------------------------------------------------------------
+  # WA Button
+-------------------------------------------------------------- -->
+
+<div class="wa__btn_popup">
+    <div class="wa-button">
+      <ul class="wa-links">
+        
+        <li><a href="https://wa.link/4r2ozk" data-tip="Chat Us"><i class='bx bxl-whatsapp'></i></a></li>
+      </ul>
+    </div>
+</div>
 
 <!-- --------------------------------------------------------------
   # FOOTER HOME

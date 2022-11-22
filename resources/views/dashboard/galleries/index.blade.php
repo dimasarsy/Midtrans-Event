@@ -35,17 +35,10 @@
                   </td>
 
                   <td> 
-                    <!-- <a href="/dashboard/galleries/{{ $gallery->slug }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
-                    
-                    <form action="/dashboard/galleries/{{ $gallery->slug }}" method="post" class="d-inline">
-                        @method('DELETE')
-                        @csrf
-                        <button class="badge bg-danger border-0" onclick="return confirm('Are you sure to delete this post?')"><span data-feather="x-circle"></span></button>
-                    </form> -->
 
-                    <a href="/dashboard/galleries/{{ $gallery->slug }}/edit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
+                    <a href="/dashboard/galleries/{{ $gallery->id }}/edit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
 
-                    <form action="/dashboard/galleries/{{ $gallery->slug }}"  method="post" class="d-inline">
+                    <form action="/dashboard/galleries/{{ $gallery->id }}"  method="post" class="d-inline">
                         @method('DELETE')
                         @csrf
                         <button class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Are you sure to delete this gallery?')"><i class="fas fa-trash"></i></button>

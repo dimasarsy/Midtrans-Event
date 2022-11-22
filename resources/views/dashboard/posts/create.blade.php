@@ -27,10 +27,9 @@
                     <span class="input-group-text" id="basic-addon1">Rp. </span>
                     <input id="description" name="description" type="text" autocomplete="description" class="form-control @error('description') is-invalid @enderror" rows="3" value="{{ old('description') }}">
                     @error('description')<div class="invalid-feedback">{{ $message }}</div> @enderror
-                    
                 </div>
                 
-                <label for="shopeelink" class="form-label">Product On Your Marketplace</label>
+                <label for="shopeelink" class="form-label">Marketplace Link</label>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Link</span>
                     <input id="shopeelink" name="shopeelink" type="text" autocomplete="shopeelink" class="form-control @error('shopeelink') is-invalid @enderror" rows="3" value="{{ old('shopeelink') }}">

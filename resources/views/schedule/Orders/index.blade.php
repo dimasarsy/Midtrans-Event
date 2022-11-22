@@ -31,7 +31,6 @@
                         <div class="col-12 col-sm-4 col-md-3">
                             <img src="{{ asset('storage/' . $k->image) }}" class="img-fluid rounded-start" alt="...">
                         </div>
-
                         <div class="col-12 col-sm-6 col-md-7">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $k->name }}
@@ -39,7 +38,6 @@
                                     <span><i class="fas fa-crown"></i> VIP</span>
                                     @endif
                                 </h5>
-
                                 <div class="row date-time">
                                     <div class="col col-sm-6 col-md-6">
                                         <p class="card-date"><i class="far fa-calendar-alt"></i>&nbsp; {!! date('d M, Y', strtotime($k->date)) !!}</p>
@@ -49,10 +47,8 @@
                                     </div>
                                 </div>
                                 <h5 class="card-desc">{!! \Illuminate\Support\Str::words($k->description, 27) !!}</h5>
-
                             </div>
                         </div>
-
                         <div class="col-12 col-sm-2 col-md-2">
                             <?php if ($responses[$i]['transaction_status'] == 'settlement') { ?>
                                 <a href="https://www.games.co.id/" class="btn card-btn"><span>Masuk<br><i class="fas fa-sign-in-alt"></i></span></a>
@@ -60,9 +56,7 @@
                                 <a href="{{ $k->pdf_url }}" class="btn card-btn-pend"><span>Selesaikan Pembayaran<br><i class="fas fa-fw fa-dollar-sign"></i></span></a>
                             <?php } ?>
                         </div>
-
                     </div>
-
                 </div>
         </div>
 

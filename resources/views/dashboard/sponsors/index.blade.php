@@ -40,9 +40,9 @@
 
                   <td> 
 
-                    <a href="/dashboard/sponsors/{{ $sponsor->slug }}/edit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
+                    <a href="/dashboard/sponsors/{{ $sponsor->id }}/edit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
 
-                    <form action="/dashboard/sponsors/{{ $sponsor->slug }}" method="post" class="d-inline">
+                    <form action="/dashboard/sponsors/{{ $sponsor->id }}" method="post" class="d-inline">
                         @method('DELETE')
                         @csrf
                         <button class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Are you sure to delete this sponsor?')"><i class="fas fa-trash"></i></button>

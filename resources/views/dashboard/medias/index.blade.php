@@ -38,9 +38,9 @@
 
                   <td> 
 
-                    <a href="/dashboard/medias/{{ $media->slug }}/edit"  class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
+                    <a href="/dashboard/medias/{{ $media->id }}/edit"  class="btn btn-info btn-circle btn-sm"><i class="fas fa-edit"></i></a>
 
-                    <form action="/dashboard/medias/{{ $media->slug }}" method="post" class="d-inline">
+                    <form action="/dashboard/medias/{{ $media->id }}" method="post" class="d-inline">
                         @method('DELETE')
                         @csrf
                         <button class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Are you sure to delete this media?')"><i class="fas fa-trash"></i></button>

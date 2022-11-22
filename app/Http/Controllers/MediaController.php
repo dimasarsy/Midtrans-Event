@@ -44,7 +44,6 @@ class MediaController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'slug'   => 'required|unique:media',
             'link'   => 'required|max:255',
             'image' => 'required|image|file|max:1024'
         ]);
@@ -96,10 +95,6 @@ class MediaController extends Controller
             'image' => 'image|file|max:1024'
         ];
 
-        if ($request->slug !== $media->slug) {
-            $rules['slug'] = 'required|unique:media';
-        }
-
         $validatedData = $request->validate($rules);
 
         if ($request->file('image')) {
@@ -132,20 +127,4 @@ class MediaController extends Controller
         return redirect()->to('/dashboard/medias')->with('deleted', 'Media has been deleted.');
     }
 
-    public function slug()
-    {
-        $slug = Str::of(request('name'))->slug()->value;
-        while (true) {
-            $media = Media::query()->where('slug', '=', $slug)->get();
-            if ($media->isNotEmpty()) {
-                $slug .= '-' . Str::lower(Str::random(5));
-                continue;
-            } else {
-                break;
-            }
-        }
-        return response()->json([
-            "slug"  => $slug
-        ]);
-    }
 }

@@ -18,8 +18,9 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Name</th>
                   <th scope="col">Picture</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">On Event</th>
                   <th scope="col">Date</th>
                   <th scope="col">Time (WIB)</th>
 
@@ -32,10 +33,11 @@
                 @foreach($lineups as $lineup)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $lineup->name }}</td>
                   <td>      
                     <img class="img-responsive" style="height:120px;" src="{{ asset('storage/' . $lineup->image) }}" alt="{{ $lineup->name }}'s image">
                   </td>
+                  <td>{{ $lineup->name }}</td>
+                  <td>{{ $lineup->sname }}</td>
                   <td>{!! date('d M, Y', strtotime($lineup->date)) !!}</td>
                   <td>{{ $lineup->starttime }}-{{ $lineup->endtime }}</td>
                   <td>

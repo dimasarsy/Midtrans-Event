@@ -15,12 +15,6 @@
                     <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror"  value="{{ old('name') }}" autofocus>
                     @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
-                <div class="mb-3">
-                    <label for="slug" class="form-label">Slug</label>
-                    <input id="slug" name="slug" type="text" readonly autocomplete="slug" class="form-control @error('slug') is-invalid @enderror" value="{{ old('slug') }}">
-                    @error('slug') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                    <small class="text-gray-500 font-medium block my-2">Auto generate after you filled field name and click tab.</small>
-                </div>
                 
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
@@ -39,18 +33,6 @@
 
 
 <script>
-
-    const name = document.getElementById('name');
-    const slug = document.getElementById('slug');
-
-    name.addEventListener('change', async function() {
-        const res = await fetch(`/dashboard/galleries/slug?${
-            new URLSearchParams({name: this.value})
-            .toString()
-        }`);
-        const data = await res.json();
-        slug.value = data.slug;
-    });
 
     function previewImage(){
         const image = document.querySelector('#image');

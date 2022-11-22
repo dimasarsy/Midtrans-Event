@@ -64,28 +64,7 @@ class OrderController extends Controller
         }
 
         curl_close($curl);
-        // dd($responses);
-        // echo $response;
-        // dd($responses);
 
-        // // Set your Merchant Server Key
-        // \Midtrans\Config::$serverKey = 'SB-Mid-server-DBl98WA_sgge6xdFShnqujZ6';
-        // // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        // \Midtrans\Config::$isProduction = false;
-        // // Set sanitization on (default)
-        // \Midtrans\Config::$isSanitized = true;
-        // // Set 3DS transaction for credit card to true
-        // \Midtrans\Config::$is3ds = true;
-
-        // $token = Http::withToken('SB-Mid-server-DBl98WA_sgge6xdFShnqujZ6');
-        // U0ItTWlkLXNlcnZlci1EQmw5OFdBX3NnZ2U2eGRGU2hucXVqWjY= ubah base64
-
-        // $token = Http::withToken('Basic U0ItTWlkLXNlcnZlci1EQmw5OFdBX3NnZ2U2eGRGU2hucXVqWjY6');
-        // $responses = $token->get(
-        //     'https://api.sandbox.midtrans.com/v2/1653400657562/status'
-        // );
-        // $responseBody = json_decode($responses);
-        // dd($responseBody);
 
         return view("schedule.Orders.index", [
             "title" => "My Order",

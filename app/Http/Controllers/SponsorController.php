@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Sponsor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -44,7 +43,6 @@ class SponsorController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'slug'   => 'required|unique:sponsors',
             'link'   => 'required|max:255',
             'image' => 'required|image|file|max:1024'
         ]);
@@ -96,10 +94,6 @@ class SponsorController extends Controller
             'image' => 'image|file|max:1024'
         ];
 
-        if ($request->slug !== $sponsor->slug) {
-            $rules['slug'] = 'required|unique:sponsors';
-        }
-
         $validatedData = $request->validate($rules);
 
         if ($request->file('image')) {
@@ -132,20 +126,4 @@ class SponsorController extends Controller
         return redirect()->to('/dashboard/sponsors')->with('deleted', 'Sponsor has been deleted.');
     }
 
-    public function slug()
-    {
-        $slug = Str::of(request('name'))->slug()->value;
-        while (true) {
-            $sponsor = Sponsor::query()->where('slug', '=', $slug)->get();
-            if ($sponsor->isNotEmpty()) {
-                $slug .= '-' . Str::lower(Str::random(5));
-                continue;
-            } else {
-                break;
-            }
-        }
-        return response()->json([
-            "slug"  => $slug
-        ]);
-    }
 }

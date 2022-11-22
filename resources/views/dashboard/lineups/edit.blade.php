@@ -24,6 +24,19 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="schedules" class="block text-sm font-medium text-gray-700 mb-2">schedules</label>
+                    <select id="schedules" name="schedule_id" autocomplete="schedules-name" class="form-select form-select-sm">
+                        @foreach($schedules as $schedule)
+                            @if( old('schedule_id', $lineup->schedule_id) == $schedule->id)
+                            <option selected value="{{ $schedule->id }}">{{ $schedule->name }}</option>
+                            @else
+                           <option value="{{ $schedule->id }}">{{ $schedule->name }}</option>
+                           @endif
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="mb-3">
                     <label for="date">Schedule Date</label>
                     <input type="date" class="form-control @error('date') is-invalid @enderror" id="date"
                         placeholder="Date" name="date" value="{{ old('date', $lineup->date) }}">

@@ -9,11 +9,15 @@ class Lineup extends Model
 {
     use HasFactory;
 
-    protected $guarded = ["id"];
-
+    protected $fillable = ["name", "slug", "schedule_id", "date", "starttime", "endtime", "availableScheduleDate",	"dueDateSchedule", "status", "information", "image"];
+    
     public function getRouteKeyName()
     {
         return 'slug';
     }
-}
 
+    public function schedules()
+    {
+        return $this->belongsTo(Schedule::class);
+    }
+}

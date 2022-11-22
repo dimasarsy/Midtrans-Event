@@ -34,7 +34,7 @@ class HomeController extends Controller
 
             'activities' => Activity::query()->latest()->get(),
             'lineup' => DB::table('lineups')->where('date', '>=', date('Y-m-d'))->orderBy("availableScheduleDate",'asc')->limit(1)->get(),
-            'lineups' => DB::table('lineups')->latest()->get(),
+            'lineups' => DB::table('lineups')->where('date', '>=', date('Y-m-d'))->orderBy("availableScheduleDate",'asc')->get(),
             'sponsors' => Sponsor::query()->latest()->get(),
             'media' => Media::query()->latest()->get()
         ]);
