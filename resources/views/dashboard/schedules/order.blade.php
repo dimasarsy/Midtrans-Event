@@ -47,9 +47,9 @@
                         </tr>
                         
                         @endforeach
-                        @empty($schedule->id === $k->schedule_id)
+                        <!-- @empty($schedule->id === $k->schedule_id)
                         <td class="text-center" colspan="5">Belum ada yang membeli tiket</td>
-                        @endempty
+                        @endempty -->
 
 
                     </tbody>

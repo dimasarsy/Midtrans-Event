@@ -14,6 +14,9 @@ class DashboardController extends Controller
          $users = DB::table('users')
         ->where('users.role_id','!=','1')
         ->get();
+
+         $orders = DB::table('orders')
+        ->get();
         
         
         return view('dashboard.index', [
@@ -26,6 +29,7 @@ class DashboardController extends Controller
                         ->select('schedules.*', 'users.role_id')
                         ->where('users.role_id','1')
                         ->get(),
+            'orders'    =>  $orders
         ]);
     }
     

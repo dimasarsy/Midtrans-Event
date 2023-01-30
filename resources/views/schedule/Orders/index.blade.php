@@ -51,9 +51,9 @@
                         </div>
                         <div class="col-12 col-sm-2 col-md-2">
                             <?php if ($responses[$i]['transaction_status'] == 'settlement') { ?>
-                                <a href="https://www.games.co.id/" class="btn card-btn"><span>Masuk<br><i class="fas fa-sign-in-alt"></i></span></a>
+                                <a href="https://sprightly-treacle-7ef66f.netlify.app/" class="btn card-btn" target="_blank"><span>Masuk<br><i class="fas fa-sign-in-alt"></i></span></a>
                             <?php } elseif ($responses[$i]['transaction_status'] == 'pending') { ?>
-                                <a href="{{ $k->pdf_url }}" class="btn card-btn-pend"><span>Selesaikan Pembayaran<br><i class="fas fa-fw fa-dollar-sign"></i></span></a>
+                                <a href="{{ $k->pdf_url }}" class="btn card-btn-pend" target="_blank"><span>Selesaikan Pembayaran<br><i class="fas fa-fw fa-dollar-sign"></i></span></a>
                             <?php } ?>
                         </div>
                     </div>

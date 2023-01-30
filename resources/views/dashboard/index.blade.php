@@ -35,7 +35,7 @@
 
         <!-- Pending Requests Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <a class="text-decoration-none" href="/dashboard/pengajuan-vendor">
+            <a class="text-decoration-none" href="/dashboard/orders">
                 <div class="dashboard">
                     <div class="card dashboard border-left-info shadow h-100 py-2">
                         <div class="card-body">
@@ -43,7 +43,7 @@
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                         User's Ticket</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $orders->count() }}</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-ticket-alt fa-2x text-gray-300"></i>

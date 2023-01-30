@@ -25,8 +25,15 @@ class LoginController extends Controller
 
         $isRememberMe = $request->post('remember-me') ? true : false;
         if (Auth::attempt($credentials, $isRememberMe)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/');
+            if (Auth::user()->role_id == 1) {
+                $request->session()->regenerate();
+                return redirect()->intended('/dashboard');
+            }
+            else {
+                $request->session()->regenerate();
+                return redirect()->intended('/');
+            }
+            
         }
 
         return back()->with('loginError', 'Login Failed! Try Again');

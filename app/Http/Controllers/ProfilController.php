@@ -54,8 +54,8 @@ class ProfilController extends Controller
     public function show()
     {
         $users = DB::table('users')
-        ->where('username', auth()->user()->username)
-        ->get();
+            ->where('username', auth()->user()->username)
+            ->get();
 
         return view('profil.index', [
             'title' => "My Profil",
@@ -84,25 +84,17 @@ class ProfilController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, User $user)
     {
         $rules = [
-            'name' => [
-                'required', 'string', 'max:255'
-            ],
-            'username' => [
-                'required', 'string', 'min:5', 'max:255',
-                Rule::unique('users', 'username')->ignore(Auth::user()->id)
-            ],
-            'email' => [
-                'required', 'email', 'max:255',
-                Rule::unique('users', 'email')->ignore(Auth::user()->id)
-            ],
+            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'min:5', 'max:255', Rule::unique('users', 'username')->ignore(Auth::user()->id)],
+            'email' => ['required', 'email', 'max:255', Rule::unique('users', 'email')->ignore(Auth::user()->id)],
             'photo' => 'image|file|max:1024'
         ];
 
         $validatedData = $request->validate($rules);
-        
+
         if ($request->file('photo')) {
             if ($request->post('old-image')) Storage::delete($request->post('old-image'));
             $validatedData['photo'] = $request->file('photo')->store('post-images');
@@ -112,18 +104,8 @@ class ProfilController extends Controller
             $request->all()
         );
 
-        if ( 
-            $request
-        ) {
-            return redirect('/profil')->with(['success' => 'Profil has been updated successfully']);
-        }else {
-            return redirect()
-                ->back()
-                ->withInput()
-                ->with([
-                    'error' => 'Some problem has occured, please try again'
-            ]);
-        }
+        return redirect()->to('/profil')->with('success', 'Your Profil has been updated.');
+
     }
 
     /**
