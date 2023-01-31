@@ -26,7 +26,7 @@ class OrderController extends Controller
         ->where('users.role_id','1')
         ->where('schedules.status','available')
         ->select('orders.*', 'schedules.name', 'schedules.image', 'schedules.date', 'schedules.starttime', 'schedules.endtime',  'schedules.price', 'schedules.description','schedules.vip')
-        ->paginate(4);
+        ->get();
 
         $orders_user = DB::table('orders')
         ->where('uname', auth()->user()->username)
@@ -40,7 +40,7 @@ class OrderController extends Controller
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
-                CURLOPT_URL => "https://api.sandbox.midtrans.com/v2/" . $order[$i]->order_id . "/status",
+                CURLOPT_URL => "https://api.sandbox.midtrans.com/v2/". $order[$i]->order_id. "/status",
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => "",
                 CURLOPT_MAXREDIRS => 10,
@@ -75,7 +75,6 @@ class OrderController extends Controller
             'responses' => $responses,
             'orders' => $orders,
         ]);
-
         
     }
     public function riwayat()

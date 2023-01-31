@@ -24,7 +24,10 @@
             @foreach ($orders as $k)
             @if($k->uname == auth()->user()->username)
 
-            @for ($i = 0; $i < $order_count; $i++) <?php if ($responses[$i]['order_id'] == $k->order_id) { ?> <?php if ($responses[$i]['transaction_status'] == 'settlement' || $responses[$i]['transaction_status'] == 'pending') { ?> <div class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+            @for ($i = 0; $i < $order_count; $i++) 
+            <?php if ($responses[$i]['order_id'] == $k->order_id) { ?> 
+                <?php if ($responses[$i]['transaction_status'] == 'settlement' || $responses[$i]['transaction_status'] == 'pending') { ?> 
+                    <div class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="bingkai">
                     <div class="row">
@@ -60,8 +63,8 @@
                 </div>
         </div>
 
-<?php }
-                                                                                                            } ?>
+            <?php }
+                    } ?>
 @endfor
 
 @endif
@@ -69,9 +72,7 @@
     </div>
     </div>
 <!-- </section> -->
-<div class="d-flex justify-content-center">
-    {{ $orders->links() }}
-</div>
+
 @else
 <!-- <section id="schedule" class="schedule mt-5"> -->
     <div class="container" data-aos="fade-up">

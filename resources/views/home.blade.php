@@ -703,7 +703,7 @@
     <div class="wa-button">
       <ul class="wa-links">
         
-        <li><a href="https://wa.link/4r2ozk" data-tip="Chat Us"><i class='bx bxl-whatsapp'></i></a></li>
+        <li><a href="https://wa.link/4r2ozk" data-tip="Chat Us" target="_blank"><i class='bx bxl-whatsapp'></i></a></li>
       </ul>
     </div>
 </div>

@@ -12,7 +12,7 @@
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="SB-Mid-client-equzoUybFDg0QXTm"></script>
+        data-client-key="SB-Mid-client-D6lVjVW2cG8BbsNt"></script>
     @yield('style')
     <title>{{ $title }}</title>
 
