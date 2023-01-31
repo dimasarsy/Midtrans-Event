@@ -40,7 +40,7 @@ class OrderController extends Controller
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
-                CURLOPT_URL => "https://api.sandbox.midtrans.com/v2/". $order[$i]->order_id. "/status",
+                CURLOPT_URL => "https://api.sandbox.midtrans.com/v2/" . $order[$i]->order_id . "/status",
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => "",
                 CURLOPT_MAXREDIRS => 10,

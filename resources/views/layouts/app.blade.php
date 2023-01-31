@@ -33,6 +33,8 @@
     <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-D6lVjVW2cG8BbsNt"></script>
+    <script id= "midtrans-script" src="https://api.midtrans.com/v2/assets/js/midtrans-new-3ds.min.js" data-environment="sandbox" data-client-key="SB-Mid-client-D6lVjVW2cG8BbsNt" type="text/javascript"></script>
+
 
     <!-- trix-editor -->
     <link rel="stylesheet" type="text/css" href="{{ asset('../trix-editor/trix.css') }}">
