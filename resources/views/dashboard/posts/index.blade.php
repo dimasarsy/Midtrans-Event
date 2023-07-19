@@ -15,7 +15,7 @@
   <section id="shop" class="shop">
     <div class="koleksi">
       <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
-        @foreach($posts as $post)
+         @foreach($posts as $post)
 
         <div class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
           <div class="product-grid mt-5">
@@ -37,7 +37,6 @@
             </div>
             <div class="product-content">
               <h3 class="title"><a href="/posts/{{ $post->slug }}">{{ \Illuminate\Support\Str::substr($post->title, 0, 10)  }}...</a></h3>
-
               <div class="price mt-2">Rp. {{ number_format($post->description, 0, ',', '.') }},-</div>
             </div>
           </div>
