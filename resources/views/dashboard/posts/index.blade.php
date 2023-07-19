@@ -29,7 +29,6 @@
                   <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
                     @method('DELETE')
                     @csrf
-                    <!-- <a data-tip="Delete" onclick="return confirm('Are you sure to delete this post?')"><i class="fa fa-trash"></i></a> -->
                     <button data-tip="Delete" class="btn-delete" onclick="return confirm('Are you sure to delete this post?')"><i class="fa fa-trash"></i></button>
                   </form>
                 </li>
